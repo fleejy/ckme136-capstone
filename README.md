@@ -13,15 +13,15 @@ The project attempts to evalute the hospital quality to identify patterns that m
 ### Documentation
 
 Documents submitted as part of the evaluation process are located in the
-[Submissions](/Submissions/) folder of this repo.
+[Submissions](/submit/) folder of this repo.
 
-- [Abstract](/Submissions/Abstract_C_Graham_CKME136.pdf) - Initial Abstract
-- [Literature Review and Methodology](/Submissions/Lit_Review_C_Graham.pdf) -
+- [Abstract](/submit/abstract.pdf) - Initial Abstract
+- [Literature Review and Methodology](/submit/lit_review.pdf) -
 Initial review of related literature and details of project methodology
 
 ## Repository organization
 
-- [Submissions](/Submissions/) - Documents submitted for evaluation
+- [Submissions](/submit/) - Documents submitted for evaluation
 - [R_code](/code/) - Any code used in the project
 - [Dataset](/dataset/) - Any dataset used in the project
 
