@@ -44,9 +44,9 @@ Note: minNumObj = 50, 20, 2, respectively.
 
 We explored two approaches to resolve the imbalance issue. The first approach was to over-sample TRUE instances, and the second approach was to down-sample FALSE instances. We discarded the over-sampling option because we had large enough dataset to down-sample and over-sampling makes overfitting more likely. Proceeding with the down-sampling approach, 964 random samples were drawn from the FALSE instances to down-sample the dataset to have 1:1 True-False ratio.
 
-With the downsized dataset, J48 Classifier from Weka was used to construct decision tree model. Within different parameters present in Weka, minNumObj parameter was used to obtain models with different tree sizes. Summary of key metrics on [Figure 1.1 and Figure 1.2] shows that down-sampling significantly enhanced recall of the model. We chose the model with smallest tree size among six mode with various tree sizes, because model displayed highest recall, maintained acceptable rate of accuracy, and was most comprehensible.
+With the downsized dataset, J48 Classifier from Weka was used to construct decision tree model. Within different parameters present in Weka, minNumObj parameter was used to obtain models with different tree sizes. Summary of key metrics on [Figure 1.1 and Figure 1.2] shows that down-sampling significantly enhanced recall of the model.
 
-The final decision tree model consisted of four leaf nodes with three attributes as decision rules [Figure 1.3]. The three attributes that played vital role in the decision making process were International Plan, Customer Service Calls and Day Minutes.
+Next step: choose the model with smallest tree size among six mode with various tree sizes, because lowest model will display highest recall, while maintaining acceptable rate of accuracy; therefore, most comprehensible.
 
 2. Naïve Bayes
 3. Logistic Regression
