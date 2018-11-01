@@ -1,5 +1,5 @@
-hoq <- read.csv(file="../dataset/final_hoq.csv", header = TRUE, stringsAsFactors=TRUE)
-
+setwd("~/repos/ckme136-capstone/")
+hoq <- read.csv(file="dataset/final_hoq.csv", header = TRUE, stringsAsFactors=TRUE)
 str(hoq)
 
 # Create ordered levels
@@ -13,4 +13,5 @@ hoq$h_imaging <- ordered(hoq$h_imaging, levels = c("'Not Available'", "'Below th
 
 # Categorize hospital overall rating
 hoq$h_rating <- cut(hoq$h_rating, breaks=c(0, 3, 5), labels=c("Low Hospital Quality", "High Hospital Quality"))
+write.csv(hoq, file = "nomRating.csv")
 str(hoq)
