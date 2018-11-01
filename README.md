@@ -27,9 +27,10 @@ Initial review of related literature and details of project methodology
 
 ### Methodology
 
-The most up-to-date details on the specific project methodology and code 
-execution will be posted shortly.
-
+1. Decision Tree
+   - Should attributes be converted using dummy variables? (e.g., For J48 classifier, should *h_imaging* be numericized?)
+2. Naïve Bayes
+3. Logistic Regression
 ### Contact Information
 
 Please direct any questions or comments to franco9505@gmail.com
