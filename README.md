@@ -25,6 +25,21 @@ Initial review of related literature and details of project methodology
 - [R_code](/code/) - Any code used in the project
 - [Dataset](/dataset/) - Any dataset used in the project
 
+### TO DO
+1. For metrics
+   - Sensitivity
+   - F1 score
+2. Down-sampling justification
+3. Improve literature review
+   - relevant projects that show methods
+   - include technicality
+4. Citation style
+   - number blocks (e.g., [1])
+5. R notebook for code
+   - J48 vs RandomForest
+6. PCA for dimension reduction
+7. Ask Tamer about ppt details (cc supervisor)
+
 ### Methodology
 
 1. Decision Tree
