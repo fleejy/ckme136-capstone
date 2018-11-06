@@ -1,0 +1,56 @@
+---
+title: "Analysis Notebook"
+author: "Jae Yong (Francisco) Lee"
+date: '2018-11-05'
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(formatR)
+# Set to wrap long lines in R
+opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
+```
+## Data Preparation
+
+Data was sourced from [Kaggle](https://www.kaggle.com/center-for-medicare-and-medicaid/hospital-ratings)
+```{r}
+setwd("~/repos/ckme136-capstone/")
+hoq <- read.csv(file="dataset/final_hoq.csv", header = TRUE, stringsAsFactors=TRUE)
+str(hoq)
+
+# Create ordered levels
+hoq$h_mortality <- ordered(hoq$h_mortality, levels = c("'Not Available'", "'Below the national average'", "'Same as the national average'", "'Above the national average'"))
+hoq$h_soc <- ordered(hoq$h_soc, levels = c("'Not Available'", "'Below the national average'", "'Same as the national average'", "'Above the national average'"))
+hoq$h_ra <- ordered(hoq$h_ra, levels = c("'Not Available'", "'Below the national average'", "'Same as the national average'", "'Above the national average'"))
+hoq$h_pex <- ordered(hoq$h_pex, levels = c("'Not Available'", "'Below the national average'", "'Same as the national average'", "'Above the national average'"))
+hoq$h_eoc <- ordered(hoq$h_eoc, levels = c("'Not Available'", "'Below the national average'", "'Same as the national average'", "'Above the national average'"))
+hoq$h_toc <- ordered(hoq$h_toc, levels = c("'Not Available'", "'Below the national average'", "'Same as the national average'", "'Above the national average'"))
+hoq$h_imaging <- ordered(hoq$h_imaging, levels = c("'Not Available'", "'Below the national average'", "'Same as the national average'", "'Above the national average'"))
+```
+The hospital overall rating was categorized based on the literature review where ratings of 4 or above are considered to have high quality (Low Hospital Quality was abbreviated to LHQ and High Hospital Quality was abbreviated to HHQ).
+``` {r}
+hoq$h_rating <- cut(hoq$h_rating, breaks=c(0, 3, 5), labels=c("LHQ", "HHQ"))
+write.csv(hoq, file = "nomRating.csv")
+str(hoq)
+```
+Afterwards, *nomRating.csv* was balanced and renamed to *nomRating-balanced.csv*. False instances were down sampled to match the true instances (i.e., from 2435 to 964).
+
+# Methodology
+
+Classification methods will be used to predict the overall hospital rating and identify the characteristics of hospitals. For predictive modelling, three classification algorithms will be explored: (1) decision tree, (2) Naïve Bayes, and (3) logistic regression.
+
+### Decision Tree
+
+The first classification algorithm applied to the dataset was the decision tree model. The technique was realized through the use of [Weka](https://www.cs.waikato.ac.nz/ml/weka/) and the built-in J48 Decision Tree classifier. With the prepared dataset, initial assessment of the model displayed high accuracy rate. However, the primary metric of success of recall were significantly lower compared to the overall accuracy rate. Since 85.5% of the class attribute were FALSE, the model was biased toward the FALSE instances and resulted in high overall accuracy at the cost of low recall on TRUE instances. For the next iteration, F score will also be examined.
+
+```{r}
+# Should national average rating be numericized?
+
+#dt <- read.csv(file="nomRating-balanced.csv", header = TRUE, stringsAsFactors=TRUE)
+#numNational <- function(x, y) { # x will be the data frame and y will be the 
+#  for(i in 1:length(x$))
+#}
+```
