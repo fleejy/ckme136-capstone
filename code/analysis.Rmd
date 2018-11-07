@@ -48,13 +48,36 @@ The first classification algorithm applied to the dataset was the decision tree 
 
 ### Logistic Regression
 ```{r}
-library()
+#install.packages("plyr")
+#install.packages("corrplot")
+#install.packages("gridExtra")
+#install.packages("ggthemes")
+#install.packages("caret")
+#install.packages("MASS")
+
+library(gridExtra)
+library(ggthemes)
+library(caret)
+library(MASS)
+library(plyr)
+library(corrplot)
+library(ggplot2)
 ```
+Data Preparation
+
+**Dealing with imbalanced class distribution**
+Answers online: 
+For logistic regression in particular, there was absolutely no benefit to creating a balanced sample. What was far more important was using all the data you had available. 
+
+For logistic regression models unbalanced training data affects only the estimate of the model intercept (although this of course skews all the predicted probabilities, which in turn compromises your predictions). Fortunately the intercept correction is straightforward: Provided you know, or can guess, the true proportion of 0s and 1s and know the proportions in the training set you can apply a rare events correction to the intercept.
+
+**How to remove outliers from dataset**
+Unsolved
 
 ### Naive Bayes
 ```{r}
 ##install.packages("e1071")
 library("e1071")
-hoq_df <- read.csv('~/repos/ckme136-capstone/dataset/')
-names(hoq_df)
+#hoq_df <- read.csv('~/repos/ckme136-capstone/dataset/')
+#names(hoq_df)
 ```
