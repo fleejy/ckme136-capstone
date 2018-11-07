@@ -47,7 +47,14 @@ Classification methods will be used to predict the overall hospital rating and i
 The first classification algorithm applied to the dataset was the decision tree model. The technique was realized through the use of [Weka](https://www.cs.waikato.ac.nz/ml/weka/) and the built-in J48 Decision Tree classifier. With the prepared dataset, initial assessment of the model displayed high accuracy rate. However, the primary metric of success of recall were significantly lower compared to the overall accuracy rate. Since 85.5% of the class attribute were FALSE, the model was biased toward the FALSE instances and resulted in high overall accuracy at the cost of low recall on TRUE instances. For the next iteration, F score will also be examined.
 
 ### Logistic Regression
-
 ```{r}
+library()
+```
 
+### Naive Bayes
+```{r}
+##install.packages("e1071")
+library("e1071")
+hoq_df <- read.csv('~/repos/ckme136-capstone/dataset/')
+names(hoq_df)
 ```
