@@ -1,7 +1,7 @@
 ---
 title: "Analysis Notebook"
 author: "Jae Yong (Francisco) Lee"
-date: '2018-11-05'
+date: '2018-11-19'
 output:
   pdf_document: default
   html_notebook: default
@@ -54,7 +54,7 @@ The first classification algorithm applied to the dataset was the decision tree 
 #install.packages("ggthemes")
 #install.packages("caret")
 #install.packages("MASS")
-
+#install.packages("gplots")
 library(gridExtra)
 library(ggthemes)
 library(caret)
@@ -62,6 +62,7 @@ library(MASS)
 library(plyr)
 library(corrplot)
 library(ggplot2)
+library(gplots)
 ```
 Data Preparation
 
@@ -74,6 +75,33 @@ For logistic regression models unbalanced training data affects only the estimat
 **How to remove outliers from dataset**
 Unsolved
 
+```{r}
+#Import dataset
+hoq <- read.csv(file="../dataset/final_hoq.csv", header = TRUE)
+str(hoq)
+```
+
+Descriptive statistics for the attributes.
+Check if there are any missing values in each attributes.
+-There are no missing values for all attributes. 
+```{r pressure, echo=FALSE}
+
+summary(hoq)
+
+sapply(hoq,function(x) sum(is.na(x)))
+```
+
+Correlation between categorical attributes. Checking if categorical variables are independent can be done with Chi-Squared test of independence.
+
+If we assume that a given set of variables are independent, then the values of the contingency table for these variables should be distributed uniformly. After, we check how far away from uniform the actual values are.
+-The Day Charge and Day minutes are correlated. So one of them will be removed from the model. We remove Day Charge. We also remove Eve Charge, Night Charge and Intl.Charge for the same reason.
+```{r}
+# Convert data as a table
+dt <- as.table(as.matrix(hoq))
+
+# Graph
+balloonplot(t(dt), main="Hospital Overall Ratings", xlab="", ylab="", label=FALSE, show.margins=FALSE)
+```
 ### Naive Bayes
 ```{r}
 ##install.packages("e1071")
