@@ -1,0 +1,15 @@
+---
+title: "Naive Bayes Notebook"
+author: "Jae Yong (Francisco) Lee"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+### Naive Bayes
+```{r}
+##install.packages("e1071")
+library("e1071")
+#hoq_df <- read.csv('~/repos/ckme136-capstone/dataset/')
+#names(hoq_df)
+```
