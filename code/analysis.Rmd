@@ -18,23 +18,33 @@ opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
 Data was sourced from [Kaggle](https://www.kaggle.com/center-for-medicare-and-medicaid/hospital-ratings)
 ```{r}
 setwd("~/repos/ckme136-capstone/")
-hoq <- read.csv(file="dataset/final_hoq.csv", header = TRUE, stringsAsFactors=TRUE)
-str(hoq)
+hoq_acute <- read.csv(file="dataset/hoq_acute_only.csv", header = TRUE, stringsAsFactors=TRUE)
+str(hoq_acute)
 
 # Create ordered levels
-hoq$h_mortality <- ordered(hoq$h_mortality, levels = c("'Not Available'", "'Below the national average'", "'Same as the national average'", "'Above the national average'"))
-hoq$h_soc <- ordered(hoq$h_soc, levels = c("'Not Available'", "'Below the national average'", "'Same as the national average'", "'Above the national average'"))
-hoq$h_ra <- ordered(hoq$h_ra, levels = c("'Not Available'", "'Below the national average'", "'Same as the national average'", "'Above the national average'"))
-hoq$h_pex <- ordered(hoq$h_pex, levels = c("'Not Available'", "'Below the national average'", "'Same as the national average'", "'Above the national average'"))
-hoq$h_eoc <- ordered(hoq$h_eoc, levels = c("'Not Available'", "'Below the national average'", "'Same as the national average'", "'Above the national average'"))
-hoq$h_toc <- ordered(hoq$h_toc, levels = c("'Not Available'", "'Below the national average'", "'Same as the national average'", "'Above the national average'"))
-hoq$h_imaging <- ordered(hoq$h_imaging, levels = c("'Not Available'", "'Below the national average'", "'Same as the national average'", "'Above the national average'"))
+hoq_acute$h_mortality <- ordered(hoq_acute$h_mortality, levels = c("Not Available", "Below the national average", "Same as the national average", "Above the national average"))
+hoq_acute$h_soc <- ordered(hoq_acute$h_soc, levels = c("Not Available", "Below the national average", "Same as the national average", "Above the national average"))
+hoq_acute$h_ra <- ordered(hoq_acute$h_ra, levels = c("Not Available", "Below the national average", "Same as the national average", "Above the national average"))
+hoq_acute$h_pex <- ordered(hoq_acute$h_pex, levels = c("Not Available", "Below the national average", "Same as the national average", "Above the national average"))
+hoq_acute$h_eoc <- ordered(hoq_acute$h_eoc, levels = c("Not Available", "Below the national average", "Same as the national average", "Above the national average"))
+hoq_acute$h_toc <- ordered(hoq_acute$h_toc, levels = c("Not Available", "Below the national average", "Same as the national average", "Above the national average"))
+hoq_acute$h_imaging <- ordered(hoq_acute$h_imaging, levels = c("Not Available", "Below the national average", "Same as the national average", "Above the national average"))
 ```
 The hospital overall rating was categorized based on the literature review where ratings of 4 or above are considered to have high quality (Low Hospital Quality was abbreviated to LHQ and High Hospital Quality was abbreviated to HHQ).
 ``` {r}
-hoq$h_rating <- cut(hoq$h_rating, breaks=c(0, 3, 5), labels=c("LHQ", "HHQ"))
-write.csv(hoq, file = "nomRating.csv")
-str(hoq)
+hoq_acute$h_rating <- cut(hoq_acute$h_rating, breaks=c(0, 3, 5), labels=c("LHQ", "HHQ"))
+
+setwd("~/repos/ckme136-capstone/")
+write.csv(hoq_acute, file = "dataset/nomRating_acute.csv")
+
+# Kruskal-Wallis Test
+kruskal.test(h_rating ~ h_mortality, data = hoq_acute)
+kruskal.test(h_rating ~ h_soc, data = hoq_acute)
+kruskal.test(h_rating ~ h_ra, data = hoq_acute)
+kruskal.test(h_rating ~ h_pex, data = hoq_acute)
+kruskal.test(h_rating ~ h_eoc, data = hoq_acute)
+kruskal.test(h_rating ~ h_toc, data = hoq_acute)
+kruskal.test(h_rating ~ h_imaging, data = hoq_acute)
 ```
 Afterwards, *nomRating.csv* was balanced and renamed to *nomRating-balanced.csv*. False instances were down sampled to match the true instances (i.e., from 2435 to 964).
 

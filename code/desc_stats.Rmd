@@ -1,0 +1,49 @@
+---
+title: "Descriptive Statistics"
+author: "Jae Yong (Francisco) Lee"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# Include libraries
+library(knitr)
+library(formatR)
+library(ggplot2)
+library(reshape2)
+library(ggpubr)
+library(dplyr)
+
+# Set figure theme
+theme_set(theme_pubr())
+
+# Set to wrap long lines in R
+opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
+```
+
+```{r}
+setwd("~/repos/ckme136-capstone/")
+hoq <- read.csv(file="dataset/", header = TRUE, stringsAsFactors=TRUE)
+str(hoq)
+```
+
+```{r}
+# Compute the frequency.
+d_mortality <- hoq %>%
+  group_by(h_mortality) %>%
+  summarise(counts = n())
+d_mortality
+
+
+# Create bar plot.
+ggplot(data=d_mortality, aes(x = h_mortality, y = counts)) +
+  ggtitle("Mortality Frequency by National Comparison") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  labs(x = "National Comparison", y = "Count") +
+  scale_y_continuous(limits = c(0, 10)) +
+  geom_bar(fill = "#0073C2FF", stat = "identity") +
+  geom_text(aes(label = counts), vjust = -0.3) + 
+  theme_pubclean() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
