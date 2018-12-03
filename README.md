@@ -64,6 +64,8 @@ With the downsized dataset, J48 Classifier from Weka was used to construct decis
 Next step: choose the model with smallest tree size among six mode with various tree sizes, because lowest model will display highest recall, while maintaining acceptable rate of accuracy; therefore, most comprehensible.
 
 2. Naïve Bayes
+- [NBC](/submit/nbc.pdf) - Naïve Bayes Classifier results
+
 3. Logistic Regression
 ### Contact Information
 
