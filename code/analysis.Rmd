@@ -35,9 +35,9 @@ The hospital overall rating was categorized based on the literature review where
 hoq_acute$h_rating <- cut(hoq_acute$h_rating, breaks=c(0, 3, 5), labels=c("LHQ", "HHQ"))
 
 setwd("~/repos/ckme136-capstone/")
-write.csv(hoq_acute, file = "dataset/nomRating_acute.csv")
+write.csv(hoq_acute, file = "dataset/nomRating_acute.csv", row.names = FALSE)
 
-# Kruskal-Wallis Test
+# Kruskal-Wallis Test for National Comparison
 kruskal.test(h_rating ~ h_mortality, data = hoq_acute)
 kruskal.test(h_rating ~ h_soc, data = hoq_acute)
 kruskal.test(h_rating ~ h_ra, data = hoq_acute)
@@ -45,6 +45,10 @@ kruskal.test(h_rating ~ h_pex, data = hoq_acute)
 kruskal.test(h_rating ~ h_eoc, data = hoq_acute)
 kruskal.test(h_rating ~ h_toc, data = hoq_acute)
 kruskal.test(h_rating ~ h_imaging, data = hoq_acute)
+
+# Kruskal-Wallis Test
+kruskal.test(h_rating ~ h_ownership, data = hoq_acute)
+kruskal.test(h_rating ~ h_es, data = hoq_acute)
 ```
 Afterwards, *nomRating.csv* was balanced and renamed to *nomRating-balanced.csv*. False instances were down sampled to match the true instances (i.e., from 2435 to 964).
 

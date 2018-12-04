@@ -1,0 +1,18 @@
+---
+title: "Multiple Factor Analysis (MFA)"
+author: "Jae Yong (Francisco) Lee"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+```{r}
+# Prepare workset
+setwd("~/repos/ckme136-capstone/")
+hoq_acute <- read.csv(file="dataset/nomRating_acute.csv", header = TRUE, stringsAsFactors=TRUE)
+
+# group=c(9,2,5,3,3,3,3,3,3,3)
+# type=c("n","n","c","n","n","n","n","n","n","n")
+library(FactoMineR)
+res = MFA(hoq_acute, group=c(9,2,5), type=c("s",rep("n",9)), ncp=9, name.group=c("ownership", "es", "overall", "mortality", "soc", "ra", "pex", "eoc", "toc", "imaging"), num.group.sup=c(1,6))
+```
