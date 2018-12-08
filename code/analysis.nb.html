@@ -231,99 +231,17 @@ hoq_acute$h_imaging &lt;- ordered(hoq_acute$h_imaging, levels = c(&quot;Not Avai
 <p>The hospital overall rating was categorized based on the literature review where ratings of 4 or above are considered to have high quality (Low Hospital Quality was abbreviated to LHQ and High Hospital Quality was abbreviated to HHQ).</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBLcnVza2FsLVdhbGxpcyBUZXN0IGZvciBOYXRpb25hbCBDb21wYXJpc29uXG5rcnVza2FsLnRlc3QoaF9yYXRpbmcgfiBoX21vcnRhbGl0eSwgZGF0YSA9IGhvcV9hY3V0ZSlcblxuYGBgIn0= -->
-<pre class="r"><code># Kruskal-Wallis Test for National Comparison
-kruskal.test(h_rating ~ h_mortality, data = hoq_acute)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaG9xX2FjdXRlJGhfcmF0aW5nIDwtIGN1dChob3FfYWN1dGUkaF9yYXRpbmcsIGJyZWFrcz1jKDAsIDMsIDUpLCBsYWJlbHM9YyhcIkxIUVwiLCBcIkhIUVwiKSlcbnNldHdkKFwifi9yZXBvcy9ja21lMTM2LWNhcHN0b25lL1wiKVxuXG5gYGAifQ== -->
+<pre class="r"><code>hoq_acute$h_rating &lt;- cut(hoq_acute$h_rating, breaks=c(0, 3, 5), labels=c(&quot;LHQ&quot;, &quot;HHQ&quot;))
+setwd(&quot;~/repos/ckme136-capstone/&quot;)
 </code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5cdEtydXNrYWwtV2FsbGlzIHJhbmsgc3VtIHRlc3RcblxuZGF0YTogIGhfcmF0aW5nIGJ5IGhfbW9ydGFsaXR5XG5LcnVza2FsLVdhbGxpcyBjaGktc3F1YXJlZCA9IDEzNi4xNSwgZGYgPSAyLCBwLXZhbHVlIDwgMi4yZS0xNlxuIn0= -->
-<pre><code>
-    Kruskal-Wallis rank sum test
-
-data:  h_rating by h_mortality
-Kruskal-Wallis chi-squared = 136.15, df = 2, p-value &lt; 2.2e-16</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiVGhlIHdvcmtpbmcgZGlyZWN0b3J5IHdhcyBjaGFuZ2VkIHRvIC9Vc2Vycy9mbGVlankvcmVwb3MvY2ttZTEzNi1jYXBzdG9uZSBpbnNpZGUgYSBub3RlYm9vayBjaHVuay4gVGhlIHdvcmtpbmcgZGlyZWN0b3J5IHdpbGwgYmUgcmVzZXQgd2hlbiB0aGUgY2h1bmsgaXMgZmluaXNoZWQgcnVubmluZy4gVXNlIHRoZSBrbml0ciByb290LmRpciBvcHRpb24gaW4gdGhlIHNldHVwIGNodW5rIHRvIGNoYW5nZSB0aGUgd29ya2luZyBkaXJlY3RvcnkgZm9yIG5vdGVib29rIGNodW5rcy5cbiJ9 -->
+<pre><code>The working directory was changed to /Users/fleejy/repos/ckme136-capstone inside a notebook chunk. The working directory will be reset when the chunk is finished running. Use the knitr root.dir option in the setup chunk to change the working directory for notebook chunks.</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxua3J1c2thbC50ZXN0KGhfcmF0aW5nIH4gaF9zb2MsIGRhdGEgPSBob3FfYWN1dGUpXG5gYGAifQ== -->
-<pre class="r"><code>kruskal.test(h_rating ~ h_soc, data = hoq_acute)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud3JpdGUuY3N2KGhvcV9hY3V0ZSwgZmlsZSA9IFwiZGF0YXNldC9ub21SYXRpbmdfYWN1dGUuY3N2XCIsIHJvdy5uYW1lcyA9IEZBTFNFKVxuYGBgIn0= -->
+<pre class="r"><code>write.csv(hoq_acute, file = &quot;dataset/nomRating_acute.csv&quot;, row.names = FALSE)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5cdEtydXNrYWwtV2FsbGlzIHJhbmsgc3VtIHRlc3RcblxuZGF0YTogIGhfcmF0aW5nIGJ5IGhfc29jXG5LcnVza2FsLVdhbGxpcyBjaGktc3F1YXJlZCA9IDQ1My4xMiwgZGYgPSAyLCBwLXZhbHVlIDwgMi4yZS0xNlxuIn0= -->
-<pre><code>
-    Kruskal-Wallis rank sum test
-
-data:  h_rating by h_soc
-Kruskal-Wallis chi-squared = 453.12, df = 2, p-value &lt; 2.2e-16</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxua3J1c2thbC50ZXN0KGhfcmF0aW5nIH4gaF9yYSwgZGF0YSA9IGhvcV9hY3V0ZSlcbmBgYCJ9 -->
-<pre class="r"><code>kruskal.test(h_rating ~ h_ra, data = hoq_acute)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5cdEtydXNrYWwtV2FsbGlzIHJhbmsgc3VtIHRlc3RcblxuZGF0YTogIGhfcmF0aW5nIGJ5IGhfcmFcbktydXNrYWwtV2FsbGlzIGNoaS1zcXVhcmVkID0gNjczLjYyLCBkZiA9IDIsIHAtdmFsdWUgPCAyLjJlLTE2XG4ifQ== -->
-<pre><code>
-    Kruskal-Wallis rank sum test
-
-data:  h_rating by h_ra
-Kruskal-Wallis chi-squared = 673.62, df = 2, p-value &lt; 2.2e-16</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxua3J1c2thbC50ZXN0KGhfcmF0aW5nIH4gaF9wZXgsIGRhdGEgPSBob3FfYWN1dGUpXG5gYGAifQ== -->
-<pre class="r"><code>kruskal.test(h_rating ~ h_pex, data = hoq_acute)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5cdEtydXNrYWwtV2FsbGlzIHJhbmsgc3VtIHRlc3RcblxuZGF0YTogIGhfcmF0aW5nIGJ5IGhfcGV4XG5LcnVza2FsLVdhbGxpcyBjaGktc3F1YXJlZCA9IDcxOS4xNCwgZGYgPSAyLCBwLXZhbHVlIDwgMi4yZS0xNlxuIn0= -->
-<pre><code>
-    Kruskal-Wallis rank sum test
-
-data:  h_rating by h_pex
-Kruskal-Wallis chi-squared = 719.14, df = 2, p-value &lt; 2.2e-16</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxua3J1c2thbC50ZXN0KGhfcmF0aW5nIH4gaF9lb2MsIGRhdGEgPSBob3FfYWN1dGUpXG5gYGAifQ== -->
-<pre class="r"><code>kruskal.test(h_rating ~ h_eoc, data = hoq_acute)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5cdEtydXNrYWwtV2FsbGlzIHJhbmsgc3VtIHRlc3RcblxuZGF0YTogIGhfcmF0aW5nIGJ5IGhfZW9jXG5LcnVza2FsLVdhbGxpcyBjaGktc3F1YXJlZCA9IDc5LjYxOSwgZGYgPSAyLCBwLXZhbHVlIDwgMi4yZS0xNlxuIn0= -->
-<pre><code>
-    Kruskal-Wallis rank sum test
-
-data:  h_rating by h_eoc
-Kruskal-Wallis chi-squared = 79.619, df = 2, p-value &lt; 2.2e-16</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxua3J1c2thbC50ZXN0KGhfcmF0aW5nIH4gaF90b2MsIGRhdGEgPSBob3FfYWN1dGUpXG5gYGAifQ== -->
-<pre class="r"><code>kruskal.test(h_rating ~ h_toc, data = hoq_acute)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5cdEtydXNrYWwtV2FsbGlzIHJhbmsgc3VtIHRlc3RcblxuZGF0YTogIGhfcmF0aW5nIGJ5IGhfdG9jXG5LcnVza2FsLVdhbGxpcyBjaGktc3F1YXJlZCA9IDE3My4yNSwgZGYgPSAyLCBwLXZhbHVlIDwgMi4yZS0xNlxuIn0= -->
-<pre><code>
-    Kruskal-Wallis rank sum test
-
-data:  h_rating by h_toc
-Kruskal-Wallis chi-squared = 173.25, df = 2, p-value &lt; 2.2e-16</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxua3J1c2thbC50ZXN0KGhfcmF0aW5nIH4gaF9pbWFnaW5nLCBkYXRhID0gaG9xX2FjdXRlKVxuYGBgIn0= -->
-<pre class="r"><code>kruskal.test(h_rating ~ h_imaging, data = hoq_acute)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5cdEtydXNrYWwtV2FsbGlzIHJhbmsgc3VtIHRlc3RcblxuZGF0YTogIGhfcmF0aW5nIGJ5IGhfaW1hZ2luZ1xuS3J1c2thbC1XYWxsaXMgY2hpLXNxdWFyZWQgPSAxMS42MjQsIGRmID0gMiwgcC12YWx1ZSA9IDAuMDAyOTkyXG4ifQ== -->
-<pre><code>
-    Kruskal-Wallis rank sum test
-
-data:  h_rating by h_imaging
-Kruskal-Wallis chi-squared = 11.624, df = 2, p-value = 0.002992</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBLcnVza2FsLVdhbGxpcyBUZXN0XG5rcnVza2FsLnRlc3QoaF9yYXRpbmcgfiBoX293bmVyc2hpcCwgZGF0YSA9IGhvcV9hY3V0ZSlcbmBgYCJ9 -->
-<pre class="r"><code># Kruskal-Wallis Test
-kruskal.test(h_rating ~ h_ownership, data = hoq_acute)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5cdEtydXNrYWwtV2FsbGlzIHJhbmsgc3VtIHRlc3RcblxuZGF0YTogIGhfcmF0aW5nIGJ5IGhfb3duZXJzaGlwXG5LcnVza2FsLVdhbGxpcyBjaGktc3F1YXJlZCA9IDY5LjQ4NSwgZGYgPSA4LCBwLXZhbHVlID0gNi4yMjJlLTEyXG4ifQ== -->
-<pre><code>
-    Kruskal-Wallis rank sum test
-
-data:  h_rating by h_ownership
-Kruskal-Wallis chi-squared = 69.485, df = 8, p-value = 6.222e-12</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxua3J1c2thbC50ZXN0KGhfcmF0aW5nIH4gaF9lcywgZGF0YSA9IGhvcV9hY3V0ZSlcbmBgYCJ9 -->
-<pre class="r"><code>kruskal.test(h_rating ~ h_es, data = hoq_acute)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5cdEtydXNrYWwtV2FsbGlzIHJhbmsgc3VtIHRlc3RcblxuZGF0YTogIGhfcmF0aW5nIGJ5IGhfZXNcbktydXNrYWwtV2FsbGlzIGNoaS1zcXVhcmVkID0gMC4wNTM3NzEsIGRmID0gMSwgcC12YWx1ZSA9IDAuODE2NlxuIn0= -->
-<pre><code>
-    Kruskal-Wallis rank sum test
-
-data:  h_rating by h_es
-Kruskal-Wallis chi-squared = 0.053771, df = 1, p-value = 0.8166</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Afterwards, <em>nomRating.csv</em> was balanced and renamed to <em>nomRating-balanced.csv</em>. False instances were down sampled to match the true instances (i.e., from 2435 to 964).</p>
