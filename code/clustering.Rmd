@@ -8,7 +8,7 @@ output:
 
 ### Clustering Preparation
 ```{r}
-filterLow <- read.csv('~/repos/ckme136-capstone/code/nomRating.csv')
+filterLow <- read.csv('~/repos/ckme136-capstone/dataset/nomRating_acute.csv')
 #Remove the LHQ
 filterLow <- filterLow[which(filterLow$h_rating == "HHQ"),]
 setwd("~/repos/ckme136-capstone/")

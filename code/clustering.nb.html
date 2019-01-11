@@ -182,10 +182,23 @@ $(document).ready(function () {
 <h3>Clustering Preparation</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZmlsdGVyTG93IDwtIHJlYWQuY3N2KCd+L3JlcG9zL2NrbWUxMzYtY2Fwc3RvbmUvZGF0YXNldC9ub21SYXRpbmdfYWN1dGUuY3N2JylcbiNSZW1vdmUgdGhlIExIUVxuZmlsdGVyTG93IDwtIGZpbHRlckxvd1t3aGljaChmaWx0ZXJMb3ckaF9yYXRpbmcgPT0gXCJISFFcIiksXVxuc2V0d2QoXCJ+L3JlcG9zL2NrbWUxMzYtY2Fwc3RvbmUvXCIpXG5cbmBgYCJ9 -->
+<pre class="r"><code>filterLow &lt;- read.csv('~/repos/ckme136-capstone/dataset/nomRating_acute.csv')
+#Remove the LHQ
+filterLow &lt;- filterLow[which(filterLow$h_rating == &quot;HHQ&quot;),]
+setwd(&quot;~/repos/ckme136-capstone/&quot;)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiVGhlIHdvcmtpbmcgZGlyZWN0b3J5IHdhcyBjaGFuZ2VkIHRvIC9Vc2Vycy9mbGVlankvcmVwb3MvY2ttZTEzNi1jYXBzdG9uZSBpbnNpZGUgYSBub3RlYm9vayBjaHVuay4gVGhlIHdvcmtpbmcgZGlyZWN0b3J5IHdpbGwgYmUgcmVzZXQgd2hlbiB0aGUgY2h1bmsgaXMgZmluaXNoZWQgcnVubmluZy4gVXNlIHRoZSBrbml0ciByb290LmRpciBvcHRpb24gaW4gdGhlIHNldHVwIGNodW5rIHRvIGNoYW5nZSB0aGUgd29ya2luZyBkaXJlY3RvcnkgZm9yIG5vdGVib29rIGNodW5rcy5cbiJ9 -->
+<pre><code>The working directory was changed to /Users/fleejy/repos/ckme136-capstone inside a notebook chunk. The working directory will be reset when the chunk is finished running. Use the knitr root.dir option in the setup chunk to change the working directory for notebook chunks.</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud3JpdGUuY3N2KGZpbHRlckxvdywgZmlsZSA9IFwiZGF0YXNldC9jbHVzdGVyaW5nLmNzdlwiLCByb3cubmFtZXMgPSBGQUxTRSlcbmBgYCJ9 -->
+<pre class="r"><code>write.csv(filterLow, file = &quot;dataset/clustering.csv&quot;, row.names = FALSE)</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQ2x1c3RlcmluZyBOb3RlYm9vayIKYXV0aG9yOiAiSmFlIFlvbmcgKEZyYW5jaXNjbykgTGVlIgpvdXRwdXQ6CiAgcGRmX2RvY3VtZW50OiBkZWZhdWx0CiAgaHRtbF9ub3RlYm9vazogZGVmYXVsdAotLS0KCiMjIyBDbHVzdGVyaW5nIFByZXBhcmF0aW9uCmBgYHtyfQpmaWx0ZXJMb3cgPC0gcmVhZC5jc3YoJ34vcmVwb3MvY2ttZTEzNi1jYXBzdG9uZS9jb2RlL25vbVJhdGluZy5jc3YnKQojUmVtb3ZlIHRoZSBMSFEKZmlsdGVyTG93IDwtIGZpbHRlckxvd1t3aGljaChmaWx0ZXJMb3ckaF9yYXRpbmcgPT0gIkhIUSIpLF0Kc2V0d2QoIn4vcmVwb3MvY2ttZTEzNi1jYXBzdG9uZS8iKQp3cml0ZS5jc3YoZmlsdGVyTG93LCBmaWxlID0gImRhdGFzZXQvY2x1c3RlcmluZy5jc3YiLCByb3cubmFtZXMgPSBGQUxTRSkKYGBg</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiQ2x1c3RlcmluZyBOb3RlYm9vayIKYXV0aG9yOiAiSmFlIFlvbmcgKEZyYW5jaXNjbykgTGVlIgpvdXRwdXQ6CiAgcGRmX2RvY3VtZW50OiBkZWZhdWx0CiAgaHRtbF9ub3RlYm9vazogZGVmYXVsdAotLS0KCiMjIyBDbHVzdGVyaW5nIFByZXBhcmF0aW9uCmBgYHtyfQpmaWx0ZXJMb3cgPC0gcmVhZC5jc3YoJ34vcmVwb3MvY2ttZTEzNi1jYXBzdG9uZS9kYXRhc2V0L25vbVJhdGluZ19hY3V0ZS5jc3YnKQojUmVtb3ZlIHRoZSBMSFEKZmlsdGVyTG93IDwtIGZpbHRlckxvd1t3aGljaChmaWx0ZXJMb3ckaF9yYXRpbmcgPT0gIkhIUSIpLF0Kc2V0d2QoIn4vcmVwb3MvY2ttZTEzNi1jYXBzdG9uZS8iKQp3cml0ZS5jc3YoZmlsdGVyTG93LCBmaWxlID0gImRhdGFzZXQvY2x1c3RlcmluZy5jc3YiLCByb3cubmFtZXMgPSBGQUxTRSkKYGBg</div>
 
 
 
