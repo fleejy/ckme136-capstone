@@ -18,6 +18,7 @@ Documents submitted as part of the evaluation process are located in the
 - [Abstract](/submit/abstract.pdf) - Initial Abstract
 - [Literature Review and Methodology](/submit/lit_review.pdf) -
 Initial review of related literature and details of project methodology
+- [PowerPoint Presentation](/submit/CKME136.pdf) - Presentation slides
 
 ## Repository organization
 
@@ -26,19 +27,9 @@ Initial review of related literature and details of project methodology
 - [Dataset](/dataset/) - Any dataset used in the project
 
 ### TO DO
-1. For metrics
-   - Sensitivity
-   - F1 score
-2. Down-sampling justification
-3. Improve literature review
-   - relevant projects that show methods
-   - include technicality
-4. Citation style
-   - number blocks (e.g., [1])
-5. R notebook for code
-   - J48 vs RandomForest
-6. PCA for dimension reduction
-7. Ask Tamer about ppt details (cc supervisor)
+1. Update this page with summaries of each section
+2. Update other literature that validate the analysis
+   - [Spertus J et al. Assessing Hospital Performance After Percutaneous Coronary Intervention Using Big Data. Circulation: Cardiovascular Quality and Outcomes 2016; 9(6): 659-669, PMID: 28263941, DOI: 10.1161/CIRCOUTCOMES.116.002826](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5341139/)
 
 ### Methodology
 
@@ -64,9 +55,9 @@ With the downsized dataset, J48 Classifier from Weka was used to construct decis
 Next step: choose the model with smallest tree size among six mode with various tree sizes, because lowest model will display highest recall, while maintaining acceptable rate of accuracy; therefore, most comprehensible.
 
 2. Naïve Bayes
-- [NBC](/submit/nbc.pdf) - Naïve Bayes Classifier results
 
 3. Logistic Regression
+
 ### Contact Information
 
 Please direct any questions or comments to franco9505@gmail.com
